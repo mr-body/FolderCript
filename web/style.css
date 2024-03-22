@@ -1,0 +1,562 @@
+* {
+	box-sizing: border-box;
+}
+
+body,
+html {
+	overflow: hidden;
+	font-family: sans-serif;
+}
+
+body {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	background: hsla(0, 0%, 0%, 0.917);
+	color: #ccc;
+	contain: content;
+}
+
+.files{
+	position: absolute;
+	font-size: 7pt;
+	left: 2%;
+	bottom: 20%;
+}
+
+header{
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	width: 100%;
+	padding: 10px;
+	background-color: #03243426;
+}
+
+.history{
+	position: absolute;
+	background: rgba(36, 36, 36, 0.961);
+	transition: 0.5s;
+	transform: translateX(1000px);
+	opacity: 0%;
+	top: 38px;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	z-index: 5;
+}
+
+.busca{
+	display: flex;
+	align-items: center;
+	contain: content;
+	background-color: white;
+	padding: 5px;
+	border-radius: 2px;
+}
+
+.campo{
+	width: 0;
+	opacity: 0%;
+	outline: none;
+	transition: 0.5s;
+	font-size: 6pt;
+	border: none;
+}
+
+.busca i{
+	position: relative;
+	color:#021b21;
+	font-size: 7pt;
+	cursor: pointer;
+	margin-right: 4px;
+}
+.showHist{
+	transform: translateX(0);
+	opacity: 100%;
+}
+
+.showInput{
+	width: 300px;
+	opacity: 100%;
+}
+
+header .logo{
+	color: orchid;
+	cursor: pointer;
+}
+
+header .logo b{
+	color: #08465b;
+}
+header .logo label{
+	color: white;
+	font-size: 6pt;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #08465b;
+	width: 50px;
+	border-radius: 30px;
+	height: 20px;
+}
+
+header div{
+	display: flex;
+	align-items: center;
+}
+
+
+.btn{
+	font-size: 9pt;
+	margin: 0 3px 0 10px;
+	cursor: pointer;
+	background-color: #65056835;
+	color: orchid;
+	padding: 5px 12px 5px 12px;
+	border-radius: 5px;
+	transition: 0.2s;
+}
+
+.btn:hover{
+	transform: scale(105%)
+}
+.btn:active{
+	transform: scale(90%)
+}
+button {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	background-image: linear-gradient(
+		120deg,
+		#1d0221,
+		#38085b,
+		#350747,
+		#300235,
+		#340331
+	);
+	background-position: top left;
+	background-size: 100%;
+	box-shadow: 0px 0px 400px rgba(255, 59, 242, 1),
+		0px 0px 200px rgba(255, 59, 242, 0.75), 0px 0px 100px rgba(255, 59, 242, 0.5),
+		0px 0px 50px rgba(255, 59, 242, 0.35), 0px 0px 25px rgba(255, 59, 242, 0.2);
+	border-radius: 100%;
+	border: none;
+	margin: 0;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.HideBigBtn{
+	transition: 0.5s;
+	transform: scale(0%);
+}
+
+button:hover {
+	box-shadow: 0px 0px 400px rgba(122, 255, 251, 1),
+		0px 0px 200px rgba(122, 255, 251, 0.75),
+		0px 0px 100px rgba(122, 255, 251, 0.5), 0px 0px 50px rgba(122, 255, 251, 0.35),
+		0px 0px 25px rgba(122, 255, 251, 0.2);
+	padding: 20px;
+	background-size: 180%;
+	transition: all 0.3s ease;
+
+	background-image: linear-gradient(
+		120deg,
+		#021b21,
+		#08465b,
+		#073b47,
+		#022935,
+		#032434
+	);
+}
+
+button:active {
+	transform: scale(0.9);
+	transition: all 0.05s ease;
+}
+
+button::before {
+	position: absolute;
+	width: calc(100% + 20px);
+	height: calc(100% + 20px);
+	border: 1px solid rgba(255, 59, 242, 0.8);
+	border-radius: 100%;
+	pointer-events: none;
+	content: "";
+	transition: all 0.3s ease;
+}
+
+button:hover::before {
+	border: 1px solid rgba(122, 255, 251, 0.6);
+	width: calc(100% + 40px);
+	height: calc(100% + 40px);
+	transition: all 0.3s ease;
+}
+
+button:active::before {
+	width: calc(100% + 20px);
+	height: calc(100% + 20px);
+	transition: all 0.07s ease;
+}
+
+button::after {
+	position: absolute;
+	width: calc(100% + 40px);
+	height: calc(100% + 40px);
+	border: 3px dashed rgba(255, 59, 242, 0.4);
+	box-shadow: 0px 0px 100px rgba(122, 255, 251, 0.1);
+	border-radius: 100%;
+	pointer-events: none;
+	animation: rotate 30s linear infinite;
+	content: "";
+	transition: all 0.3s ease;
+}
+
+@keyframes rotate {
+	to {
+		transform: rotateZ(-360deg);
+	}
+}
+
+button:hover::after {
+	border: 2px dashed rgba(122, 255, 251, 0.3);
+	width: calc(100% + 80px);
+	height: calc(100% + 80px);
+	transition: all 0.3s ease;
+}
+
+button:active::after {
+	width: calc(100% + 40px);
+	height: calc(100% + 40px);
+	transition: all 0.07s ease;
+}
+
+button > svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	mix-blend-mode: overlay;
+	transition: all 0.3s ease;
+	z-index: 1;
+}
+
+button i {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+button i svg {
+	position: relative;
+	width: 100%;
+	height: auto;
+	filter: drop-shadow(0px 0px 5px white);
+	mix-blend-mode: overlay;
+}
+
+button:hover i svg {
+	animation: shake 0.5s linear infinite;
+}
+
+@keyframes shake {
+	0% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(15deg);
+	}
+	75% {
+		transform: rotate(-15deg);
+	}
+}
+
+button span {
+	position: absolute;
+	top: -7px;
+	right: -11px;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(5px);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	z-index: 2;
+}
+
+button:hover span {
+	background-color: #333;
+	transition: all 0.3s ease;
+}
+
+button span p {
+	font: normal normal 400 14pt / 2cap "Roboto Mono", monospace;
+	color: #ccc;
+	margin: 0;
+	position: relative;
+	left: 1px;
+}
+
+button span svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+aside {
+	position: absolute;
+	bottom: 4%;
+	left: 4%;
+	cursor: pointer;
+	border-radius: 30px;
+	color: #fff;
+	padding: 7px 30px 7px 30px;
+	font-size: 10pt;
+	background-color: rgba(255, 59, 242, 0.8);
+	transition: all 0.3s ease;
+	contain: content;
+	border: 2px dashed rgba(255, 255, 255, 0.255);
+	transition: 0.2s;
+}
+
+aside:hover{
+	background-color: rgba(255, 59, 242, 0.323);
+	transform: scale(90%);
+}
+aside:active{
+	transform: scale(95%);
+	background-color: rgba(122, 255, 251, 0.6);
+}
+aside label{
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+button:hover ~ aside {
+	opacity: 80%;
+	background-color: rgba(122, 255, 251, 0.6);
+	transition: all 0.3s ease;
+}
+
+.fi-rr-bug{
+	font-size: 50px;
+	color: rgba(255, 255, 255, 0.415);
+	box-shadow: 0px 0px 100px rgba(122, 255, 251, 0.1);
+	border-radius: 50%;
+	z-index: 4;
+}
+
+section{
+	position: absolute;
+	right: 2%;
+	bottom: 7%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.viewStatus{
+	position: absolute;
+	bottom: 1%;
+	right: 2%;
+	font-size: 9pt;
+}
+
+section div{
+	background-color: #0ddb9a13;
+	margin-bottom: 10px;
+	width: 150px;
+	height: 40px;
+	border-radius: 4px;
+	font-size: 9pt;
+	contain: content;
+	cursor: pointer;
+	transition: 0.2s;
+	border: 1px solid #03d4a03c;
+}
+section div:hover{
+	transform: translateX(-7px);
+}
+
+section div #size{
+	position: absolute;
+	right: 4%;
+	bottom: 8%;
+	font-size: 7pt;
+	font-weight: 600;
+}
+section div #nome{
+	margin-left: 10px;
+}
+
+.modal{
+	position: absolute;
+	background: white;
+	width: 80%;
+	height: 50%;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 9;
+	transition: 0.2s;
+	transform: translateY(-800px);
+}
+
+.modal #chave{
+	width: 250px;
+	border: none;
+	text-align: center;
+	border-bottom: 1px solid #38085b;
+	padding: 5px;
+	outline: none;
+}
+
+.modal select{
+	width: 250px;
+	border: none;
+	background-color: white;
+	outline: none;
+}
+
+.modal select option{
+	border: none;
+	padding: 20px;
+}
+
+.fechar{
+	position: absolute;
+	top: 7%;
+	cursor: pointer;
+	right: 3%;
+}
+
+.fechar:hover{
+	color: red;
+}
+.startCript{
+	margin-top: 20px;
+	background-color: #300235;
+	color: white;
+	width: 200px;
+	text-align: center;
+	padding: 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.showModal{
+	transform: translateY(0);
+}
+
+.concluido{
+	position: absolute;
+	top: 15%;
+	background-color:#022935;
+	font-weight: 600;
+	padding: 20px;
+	border-radius: 5px;
+	transition: 1s;
+	transform: scale(0%);
+}
+
+.rotulo{
+	position: absolute;
+	bottom: 15%;
+	font-size: 9pt;
+	max-width: 200px;
+	text-align: center;
+	transition: 1.4s;
+	transform: scale(0%);
+}
+
+.showSucess{
+	transform: scale(100%);
+}
+
+.progress{
+	position: absolute;
+	transition: 0.4s;
+	opacity: 0%;
+	transform: scale(0%);
+}
+
+.showprogress{
+	transform: scale(100%);
+	opacity: 100%;
+}
+
+
+@media (max-height: 270px) {
+	aside {
+		display: none;
+	}
+}
+
+.history{
+	overflow-y: scroll;
+	position: absolute;
+	top: 47px;
+	contain: content;
+	max-height: calc(100vh - 47px);
+}
+
+#listaHistoric{
+}
+.history::-webkit-scrollbar{
+    background-color: #efefef00;
+    width: 3px;
+}
+.history::-webkit-scrollbar-thumb{
+    background-color:#0324348f;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+table{
+	width: 100%;
+}
+
+td{
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 7px;
+	font-size: 9pt;
+}
+#date{
+	padding: 5px;
+	background-color: #d8d8d837;
+	color: white;
+	font-size: 6pt;
+	border-radius: 5px;
+}

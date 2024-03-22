@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Helena Cript (mr.body)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./icons/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="./assets/css/modal.css">
+<script type="text/javascript" src="/eel.js"></script>
+
+<script src="assets/js/jquery.js"></script>
+
+<!-- <script src="./models/effect.js"></script>
+<script src="./models/window.js"></script> -->
+<script src="./models/render.js"></script>
+
+<!-- partial:index.partial.html -->
+</head>
+<body>
+<header>
+	<div class="logo">
+		<span>Helena<b>Cript</b></span>
+	</div>
+	<div>
+		<div class="btn" onclick="togglehistory()">Historico</div>
+		<div class="busca">
+			<input type="text" placeholder="descricao ou nome da pasta" class="campo" oninput="buscaHist(this.value)">
+			<i class=" fi-rr-search" onclick="toggleInput()"></i>
+		</div>
+
+		<div class="history">
+			<table id="listaHistoric">
+				<!-- Table rows will be appended here -->
+			</table>
+		</div>
+	</div>
+</header>
+<div class="files">
+	<span id="nomePasa"></span><br>
+	<span id="tamanhoTotal"></span><br>
+	<span id="nPastas"></span><br>
+	<span id="nitens"></span><br>
+</div>
+<section class="viewStatus">
+	<span id="filename"></span>
+</section>
+<div class="progress"></div>
+<button type="button" onclick="cript()">
+	<i class="fi-rr-bug"></i>
+	
+	<svg viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<circle cx="37" cy="37" r="36" stroke="black" stroke-width="2" stroke-dasharray="0,0,0,0,0,225.8292694091797">
+			<animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="indefinite" dur="5.43653642049062s" values="0,0,0,0,0,225.8292694091797; 
+          0,0,0,45.59790218816986,89.0355628446701,91.19580437633972; 
+          0,0,75.27642313639323,0,150.55284627278647,225.8292694091797; 
+          0,0,150.55284627278647,0,75.27642313639323,225.8292694091797; 
+          0,0,188.19105784098306,37.63821156819662,0,0; 
+          0,225.8292694091797,0,75.27642313639323,0,225.8292694091797" keyTimes="0; 0.16666666666666666; 0.3333; 0.6666; 0.8333; 1" begin="0.935907495683864s"></animate>
+		</circle>
+	</svg>
+</button>
+
+<div class="modal">
+	<h1>CHAVE DA CRIPT</h1>
+	<input type="password" id="chave" style="background-color: white;" placeholder="Password">
+	<div>
+	  <select class="option">
+		  <option value="1">Criptografar</option>
+		  <option value="0">Descriptografar</option>
+	  </select>
+	</div>
+	<span onclick="closeModal()" class="fechar">Fechar</span>
+	<span onclick="criptografar()" class="startCript">Iniciar</span>
+  </div>
+
+<aside onclick="selectFolder()">
+	<i class="fi-rr-folder-tree"></i>
+	<label for="" id="btn_titulo">Selecionar Pasta</label>
+</aside>
+
+<section>
+	<div>
+		<h5 id="nome">Device 1</h5>
+		<span id="size">5GB</span>
+	</div>
+	<div>
+		<h5 id="nome">Device 1</h5>
+		<span id="size">16Gb</span>
+	</div>
+</section>
+
+<p id="postCaminho" style="display: none;">Nenhuma pasta selecionada</p>
+
+<span class="concluido">Concludo 100%</span>
+<span class="rotulo">Concludo  pasta criptografada com sucesso, mr.body</span>
+<!-- partial -->
+<script src="./models/tabs.js"></script>
+<script src="./assets/js/circle-progress.min.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+<script src="./assets/js/script.js"></script>
+
+<script>
+	i = 0;
+	function togglehistory()
+	{
+		if (i == 0){
+			document.querySelector('.history').classList.toggle('showHist')
+			i = 1
+		}else{
+			document.querySelector('.history').classList.toggle('showHist')
+			i = 0
+		}
+	}
+	function toggleInput()
+	{
+		document.querySelector('.campo').classList.toggle('showInput')
+		document.querySelector('.fi-rr-search').classList.toggle('fi-rr-angle-small-right')
+		if (i == 0){
+			document.querySelector('.history').classList.add('showHist')
+		}
+		
+	}
+
+	function cript() {
+
+		document.querySelector('.concluido').classList.remove('showSucess');
+    	document.querySelector('.rotulo').classList.remove('showSucess');
+
+		document.querySelector('button').classList.add('HideBigBtn');
+		document.querySelector('.modal').classList.add('showModal');
+		document.querySelector('.progress').classList.add('showprogress');
+	}
+
+	function closeModal() {
+
+		document.querySelector('.concluido').classList.remove('showSucess');
+		document.querySelector('.rotulo').classList.remove('showSucess');
+
+		document.querySelector('button').classList.remove('HideBigBtn');
+		document.querySelector('.modal').classList.remove('showModal');
+		document.querySelector('.progress').classList.remove('showprogress');
+	}
+
+</script>
+</body>
+</html>

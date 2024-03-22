@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appeel</title>
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/boxicon/css/boxicons.css">
+
+    <script src="../assets/js/jquery.js"></script>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    
+    <script src="../models/effect.js"></script>
+    <script src="../models/window.js"></script>
+<style type= "text/css">
+    body{
+        width: 100vh;
+    }
+
+    #listaHistoric{
+        width: 100vh
+    }
+    .colunas{
+        display: grid;
+        width: 100%;
+        padding: 10px;
+        border-bottom:1px solid #efefef;
+        grid-template-columns: 1fr1fr 1fr 1fr 1fr;
+    }
+    .colunas div{
+        font-size: 8pt;
+        font-weight: 600;
+    }
+</style>
+
+</head>
+<body onload="loadHistory()" style="width: 00vh;">
+    <div class="container-fluid">
+	   <div id="listaHistoric"></div>
+    </div>
+
+<script type="text/javascript" src="../app.js"></script>
+<script src="../models/render.js"></script>
+<script src="../assets/js/bootstrap.js"></script>
+</body>
+</html>

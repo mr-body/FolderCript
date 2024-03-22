@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appeel</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/tabs.css">
+    <link rel="stylesheet" href="assets/css/boxicons/css/boxicons.css">
+
+    <script src="assets/js/jquery.js"></script>
+
+    <script src="./models/effect.js"></script>
+    <script src="./models/window.js"></script>
+    <script src="./models/render.js"></script>
+
+    <script type="text/javascript" src="/eel.js"></script>
+
+</head>
+<style>
+    main{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      position: absolute;
+      height: 100%;
+      align-items: center;
+      background-color: rgba(31, 30, 40, 0.832);
+    }
+  
+    main .progress{
+      position: absolute;
+      display: flex;
+      width: 250px;
+      height: 250px;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+    }
+    .btnCripto{
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(248, 11, 79);
+      text-transform: uppercase;
+      font-size: 15pt;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+    main .progress button:hover{
+      transform: scale(90%);
+      background: rgb(121, 1, 75);
+    }
+    main .progress button:active{
+      transform: scale(100%);
+      background: rgb(121, 1, 1);
+    }
+    main .progress button i{
+      font-size: 40pt;margin-bottom: 15px;
+    }
+  
+    .modal{
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(40, 40, 40);
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      transform: scale(0%);
+      transition: 0.5s;
+    }
+  
+    .modal input{
+      margin: 0.4rem;
+      font-size: 12pt;
+      padding: 7px;
+      outline: none;
+      width: 70%;
+    }
+  
+    .modal i{
+      background-color: #efefef;
+      height: 90px;
+      margin: 0.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+  
+    .modal button{
+      position: absolute;
+      bottom: 2%;
+      right: 2%;
+      border: none;
+      font-size: 13pt;
+      color: white;
+      padding: 10px 20px 10px 20px;
+      background-color: green;
+      border-radius: 4px;
+    }
+
+    .modal .fechar{
+      width: 150px;
+      position: absolute;
+      bottom: 2%;
+      left: 2%;
+      border: none;
+      font-size: 13pt;
+      color: white;
+      padding: 10px 20px 10px 20px;
+      background-color: red;
+      border-radius: 4px;
+    }
+  
+    .showMonal{
+      transform: scale(100%);
+    }
+  
+  </style>
+<body>
+        <header>
+            <div style="display: flex;">
+                <div class="add" style="margin-right: 10px;" onclick="selectFolder()"">
+                    <i class='bx bx-plus-medical bx-tada-hover' style="font-size: 11pt;"></i>
+                </div>
+                <div class="add" style="opacity: 60%;">
+                    <i class='bx bx-lock-open-alt bx-tada-hover'></i>
+                </div>
+            </div>
+            <div class="rigth">
+                <i class='bx bxs-droplet-half'></i>
+                <i class='bx bx-search-alt bx-tada-hover'></i>
+                <i class='bx bx-category-alt'></i>
+            </div>
+        </header>
+    <div class="container-fluid">
+        <div class="tabContainer">
+            <div class="buttonContainer">
+                <button onclick="showPanel(0,'#0f193b')">
+                    <div class="icon"><i class='bx bxs-face-mask'></i></div>
+                    <div class="info">Criptografar</div>
+                </button>
+                <button onclick="showPanel(1,'#0f193b')">
+                    <div class="icon"><i class='bx bxs-virus'></i></div>
+                    <div class="info">Descriptografae</div>                    
+                </button>
+                <button onclick="showPanel(2,'#0f193b')">
+                    <div class="icon"><i class='bx bx-history'></i> </div>
+                    <div class="info">Historico</div>
+                </button>
+                <button onclick="showPanel(3,'#0f193b')">
+                    <div class="icon"><i class='bx bxs-cog'></i> </div>
+                    <div class="info">Configuracoes</div>
+                </button>
+            </div>
+            <div class="tabPanel">
+                <link rel="stylesheet" href="./assets/css/modal.css">
+                <main>
+                    <div class="progress">
+                      <button onclick="cript()" class="btnCripto"><i class='bx bx-shield bx-burst'></i><label for="" style="margin-top: 7px;">Iniciar <br> Criptografia</label></button>
+                    </div>
+                
+                    <div class="modal">
+                      <h1>CHAVE DA CRIPT</h1>
+                      <input type="password" id="chave" style="background-color: white;" placeholder="Chabe da criptografia">
+                      <div>
+                        <select class="option">
+                        	<option value="1">Criptografar</option>
+                        	<option value="0">Descriptografar</option>
+                        </select>
+                      </div>
+                      <button onclick="document.querySelector('.modal').classList.remove('showMonal')" class="fechar">Fechar</button>
+                      <button onclick="criptografar()">Iniciar</button>
+                    </div>
+                  </main>
+
+                <div class="files">
+                    <span id="nomePasa"></span><br>
+                    <span id="tamanhoTotal"></span><br>
+                    <span id="nPastas"></span><br>
+                    <span id="nitens"></span><br>
+                </div>
+
+            </div>
+            <div class="tabPanel">
+              
+            </div>
+            <div class="tabPanel">
+                <div id="listaHistoric"></div>
+            </div>
+            <div class="tabPanel">Tab 4:Content</div>
+        </div>        
+    </div>
+    <section class="viewStatus">
+        <span id="filename">Criptografando...</span>
+    </section>
+    <footer>
+        <div>
+            <p id="postCaminho">Nenhuma pasta selecionada</p>
+        </div>
+        <div>
+            <p id="info">https://alfaa.web.app</p>
+        </div>
+    </footer>
+
+<script src="./models/tabs.js"></script>
+<script src="./assets/js/circle-progress.min.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+<script src="./assets/js/script.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+
+<script>
+    function cript()
+    {
+      document.querySelector('.modal').classList.add('showMonal')
+    }
+
+
+  </script>
+</body>
+</html>

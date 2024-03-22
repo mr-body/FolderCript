@@ -1,0 +1,93 @@
+.progress {
+  --progress-value: .3243;
+  --hue: calc(240 * (1 - var(--progress-value)));
+  --brightness: calc(30% + 20% * var(--progress-value));
+  --color: hsl(var(--hue), 100%, var(--brightness));
+}
+
+.circle-progress {
+  width: 250px;
+  height: 250px;
+}
+
+.circle-progress-value {
+  stroke-width: 6px;
+  stroke: var(--color);
+  stroke-dasharray: 5.98 2;
+  transition: stroke 0.4s, stroke-width 0.4s;
+}
+
+.circle-progress-circle {
+  stroke-width: 2px;
+  stroke: rgba(49, 49, 49, 0.512);
+  /* Box-shadow removed for radiance */
+}
+
+.circle-progress-text {
+  font-weight: bold;
+  fill: rgb(211, 94, 205);
+  transform: translateX(0.2em);
+  transition: fill 0.4s;
+}
+
+input[type=range] {
+  width: 210px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  -webkit-appearance: none;
+  display: inline-block;
+  background: none;
+  cursor: pointer;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  background: #17181c;
+  outline: none;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  background: #17181c;
+  outline: none;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 6px;
+  background: #17181c;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb,
+input[type=range]::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  margin-top: -5px;
+  background: #75798a; /* Cor modificada */
+  transition: 0.15s;
+  border: none;
+  border-radius: 50%; /* Alterado para círculo */
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8); /* Adicionando brilho */
+}
+
+input[type=range]:hover::-webkit-slider-thumb,
+input[type=range]:focus::-webkit-slider-thumb,
+input[type=range]:hover::-moz-range-thumb,
+input[type=range]:focus::-moz-range-thumb,
+input[type=range]:hover::-ms-thumb,
+input[type=range]:focus::-ms-thumb {
+  background: #b0bec5; /* Cor modificada para hover/focus */
+}
+
+a {
+  color: #75798a;
+  text-decoration-offset: 4px;
+}
